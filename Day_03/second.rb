@@ -1,5 +1,6 @@
-input = File.read("input.txt");
-lines = input.split("\n");
+input = File.read("input.txt")
+lines = input.lines.map(&:strip).each_slice(3)
+
 score = {
   'a' => 1,
   'b' => 2,
@@ -29,9 +30,15 @@ score = {
   'z' => 26
 }
 
+
 sum = 0 
 lines.map() do |line|
-  
+  common = line[0].split('') & line[1].split('') & line[2].split('')
+  if common[0] == common[0].capitalize 
+    sum = score[common[0].downcase] + 26 + sum
+  else
+    sum = score[common[0].downcase] + sum
+  end
 end
 
 puts sum
