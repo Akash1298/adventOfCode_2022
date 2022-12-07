@@ -15,11 +15,9 @@ lines.map() do |line|
   second_pair_start, second_pair_end = second_pair.split('-', 2)
   second_pair_array = all_between( second_pair_start.to_i, second_pair_end.to_i)
 
-
-  unionized = (first_pair_array & second_pair_array)
-    if unionized == first_pair_array || unionized == second_pair_array
-      sum = sum + 1
-    end
+  if first_pair_array.intersection(second_pair_array).length() > 0
+    sum = sum + 1
+  end
 end
 
 puts sum
